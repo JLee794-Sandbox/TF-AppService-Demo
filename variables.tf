@@ -60,3 +60,15 @@ variable "tags" {
   type        = map
   default = {}
 }
+
+variable "app_configuration_features" {
+  type        = map
+  description = "(Optional) Mapping of app configuration features"
+  default = {}
+}
+
+variable "app_configuration_keys" {
+  type        = map
+  description = "(Optional) Mapping of app configuration keys"
+  default = {}
+}

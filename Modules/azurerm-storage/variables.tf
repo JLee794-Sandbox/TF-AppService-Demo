@@ -89,3 +89,15 @@ variable "tags" {
   type        = map(string)
   default     = null
 }
+
+variable "contributors" {
+  type = list(string)
+  description = "List of AD Group display names to assign as Contributor to the storage account."
+  default = []
+}
+
+variable "readers" {
+  type = list(string)
+  description = "List of AD Group display names to assign as Reader to the storage account."
+  default = []
+}

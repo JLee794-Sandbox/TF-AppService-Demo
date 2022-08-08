@@ -30,7 +30,9 @@ module "azurecaf-app" {
   resource_types = [
     "azurerm_resource_group",
     "azurerm_app_service_plan",
-    "azurerm_app_service"
+    "azurerm_app_service",
+    "azurerm_storage_account",
+    "azurerm_key_vault"
   ]
   location = var.location
   owner    = var.owner
