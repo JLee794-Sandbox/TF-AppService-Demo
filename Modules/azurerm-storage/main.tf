@@ -43,9 +43,44 @@ resource "azurerm_storage_account" "this" {
   }
 }
 
+# 
+# Create Containers if specified
+# ------------------------------------------
 resource "azurerm_storage_container" "this" {
   count                 = length(var.containers)
   name                  = var.containers[count.index].name
   storage_account_name  = azurerm_storage_account.this.name
   container_access_type = var.containers[count.index].access_type
+}
+
+#
+# Create Role Assignments if specified
+# ------------------------------------------
+data "azuread_groups" "ad_group_ids" {
+  display_names = local.all_ad_group_names
+}
+
+locals {
+  all_ad_group_names = concat(
+    var.contributors,
+    var.readers,
+  )
+
+  ad_group_mapping = zipmap(local.all_ad_group_names,data.azuread_groups.ad_group_ids.object_ids)
+}
+
+resource "azurerm_role_assignment" "st_contributors" {
+  for_each = toset(var.contributors)
+
+  scope                = azurerm_storage_account.this.id
+  role_definition_name = "Storage Account Contributor"
+  principal_id         = local.ad_group_mapping[each.key]
+}
+
+resource "azurerm_role_assignment" "st_readers" {
+  for_each = toset(var.readers)
+
+  scope                = azurerm_storage_account.this.id
+  role_definition_name = "Reader"
+  principal_id         = local.ad_group_mapping[each.key]
 }
