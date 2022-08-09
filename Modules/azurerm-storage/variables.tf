@@ -91,13 +91,13 @@ variable "tags" {
 }
 
 variable "contributors" {
-  type = list(string)
+  type        = list(string)
   description = "List of AD Group display names to assign as Contributor to the storage account."
-  default = []
+  default     = []
 }
 
 variable "readers" {
-  type = list(string)
+  type        = list(string)
   description = "List of AD Group display names to assign as Reader to the storage account."
-  default = []
+  default     = []
 }

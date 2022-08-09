@@ -66,7 +66,7 @@ locals {
     var.readers,
   )
 
-  ad_group_mapping = zipmap(local.all_ad_group_names,data.azuread_groups.ad_group_ids.object_ids)
+  ad_group_mapping = zipmap(local.all_ad_group_names, data.azuread_groups.ad_group_ids.object_ids)
 }
 
 resource "azurerm_role_assignment" "st_contributors" {

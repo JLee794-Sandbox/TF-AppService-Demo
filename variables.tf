@@ -20,7 +20,7 @@ variable "application_name" {
 variable "prefix" {
   description = "(Optional) Prefix to set for the resource names. Defaults to 'az'."
   type        = string
-  default = "az"
+  default     = "az"
 }
 
 variable "owner" {
@@ -57,18 +57,18 @@ variable "location" {
 
 variable "tags" {
   description = "(Optional) Additional tags to apply to the resource."
-  type        = map
-  default = {}
+  type        = map(any)
+  default     = {}
 }
 
 variable "app_configuration_features" {
-  type        = map
+  type        = map(any)
   description = "(Optional) Mapping of app configuration features"
-  default = {}
+  default     = {}
 }
 
 variable "app_configuration_keys" {
-  type        = map
+  type        = map(any)
   description = "(Optional) Mapping of app configuration keys"
-  default = {}
+  default     = {}
 }

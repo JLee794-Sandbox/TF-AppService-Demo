@@ -9,35 +9,35 @@
 #
 # ------------------------------------------------
 variable "storage_account_contributors" {
-  type = list(string)
+  type        = list(string)
   description = "List of AD Group display names to assign as Contributor to the storage account."
-  default = []
+  default     = []
 }
 variable "storage_account_readers" {
-  type = list(string)
+  type        = list(string)
   description = "List of AD Group display names to assign as Reader to the storage account."
-  default = []
+  default     = []
 }
 
 module "azurerm_storage" {
   source = "./Modules/azurerm-storage"
 
-  name = module.azurecaf-app.results["azurerm_storage_account"]
-  resource_group_name = module.app-rg.name
-  location            = module.app-rg.location
+  name                     = module.azurecaf-app.results["azurerm_storage_account"]
+  resource_group_name      = module.app-rg.name
+  location                 = module.app-rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
   contributors = var.storage_account_contributors
   readers      = var.storage_account_readers
-  
+
   tags = module.azurecaf-app.tags
 }
 
 module "azurerm_key_vault" {
   source = "./Modules/azurerm-key-vault"
 
-  name = module.azurecaf-app.results["azurerm_key_vault"]
+  name                = module.azurecaf-app.results["azurerm_key_vault"]
   resource_group_name = module.app-rg.name
   location            = module.app-rg.location
 

@@ -14,7 +14,13 @@
         - [Backend Attribute Descriptions:](#backend-attribute-descriptions)
       - [Provide Parameters Required for Deployment](#provide-parameters-required-for-deployment)
       - [Deploy](#deploy)
-  - [Terraform Overview](#terraform-overview)
+- [Terraform Solution Overview](#terraform-solution-overview)
+  - [Requirements](#requirements)
+  - [Providers](#providers)
+  - [Modules](#modules)
+  - [Resources](#resources)
+  - [Inputs](#inputs)
+  - [Outputs](#outputs)
 
 ## Pre-requisites
 
@@ -116,7 +122,57 @@ As you configured the backend remote state with your live Azure infrastructure r
     terraform apply
     ```
 
-## Terraform Overview
+# Terraform Solution Overview
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.4.0 |
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_app-rg"></a> [app-rg](#module\_app-rg) | ./Modules/azurerm-resourcegroup | n/a |
+| <a name="module_appservice-plan"></a> [appservice-plan](#module\_appservice-plan) | ./Modules/azurerm-appservice-plan | n/a |
+| <a name="module_azurecaf-app"></a> [azurecaf-app](#module\_azurecaf-app) | ./Modules/azurecaf-naming | n/a |
+| <a name="module_azurerm_key_vault"></a> [azurerm\_key\_vault](#module\_azurerm\_key\_vault) | ./Modules/azurerm-key-vault | n/a |
+| <a name="module_azurerm_storage"></a> [azurerm\_storage](#module\_azurerm\_storage) | ./Modules/azurerm-storage | n/a |
+| <a name="module_linux-webapp"></a> [linux-webapp](#module\_linux-webapp) | ./Modules/azurerm-appservice-linux-webapp | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_app_configuration_features"></a> [app\_configuration\_features](#input\_app\_configuration\_features) | (Optional) Mapping of app configuration features | `map(any)` | `{}` | no |
+| <a name="input_app_configuration_keys"></a> [app\_configuration\_keys](#input\_app\_configuration\_keys) | (Optional) Mapping of app configuration keys | `map(any)` | `{}` | no |
+| <a name="input_application_name"></a> [application\_name](#input\_application\_name) | (Required) Product/Application name which will be appended as a suffix. | `string` | n/a | yes |
+| <a name="input_country_code"></a> [country\_code](#input\_country\_code) | (Required) Short country code to use for the name (eg. eu for europe, na for north america) | `string` | n/a | yes |
+| <a name="input_environment_code"></a> [environment\_code](#input\_environment\_code) | (Required) Numerical representation of the environment | `string` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | (Required) location - example: South Central US = southcentralus | `string` | n/a | yes |
+| <a name="input_owner"></a> [owner](#input\_owner) | (Required) Email or ID of the owner for the resource. | `string` | n/a | yes |
+| <a name="input_prefix"></a> [prefix](#input\_prefix) | (Optional) Prefix to set for the resource names. Defaults to 'az'. | `string` | `"az"` | no |
+| <a name="input_storage_account_contributors"></a> [storage\_account\_contributors](#input\_storage\_account\_contributors) | List of AD Group display names to assign as Contributor to the storage account. | `list(string)` | `[]` | no |
+| <a name="input_storage_account_readers"></a> [storage\_account\_readers](#input\_storage\_account\_readers) | List of AD Group display names to assign as Reader to the storage account. | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Additional tags to apply to the resource. | `map(any)` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_app-rg"></a> [app-rg](#output\_app-rg) | Application Layer Outputs --------------------------------------------------------- |
+| <a name="output_appservice-plan"></a> [appservice-plan](#output\_appservice-plan) | n/a |
+| <a name="output_azurecaf-naming-objects"></a> [azurecaf-naming-objects](#output\_azurecaf-naming-objects) | n/a |
+| <a name="output_azurerm_storage"></a> [azurerm\_storage](#output\_azurerm\_storage) | n/a |
+| <a name="output_kv"></a> [kv](#output\_kv) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

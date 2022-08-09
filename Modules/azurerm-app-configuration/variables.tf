@@ -16,13 +16,13 @@ variable "name" {
 }
 
 variable "app_configuration_features" {
-  type        = map
+  type        = map(any)
   description = "(Optional) Mapping of app configuration features"
-  default = {}
+  default     = {}
 }
 
 variable "app_configuration_keys" {
-  type        = map
+  type        = map(any)
   description = "(Optional) Mapping of app configuration keys"
-  default = {}
+  default     = {}
 }

@@ -7,7 +7,7 @@ locals {
   #   standards specified within the Modules/azurecaf-naming/outputs.tf
   #   file.
   additional_tags = merge(
-    var.tags, 
+    var.tags,
     {
       Provisioner = "Terraform"
       Customer    = "myNexus"
@@ -15,7 +15,7 @@ locals {
   )
 
   # Layer specific tags
-  app_layer_tags     = {}
+  app_layer_tags = {}
 }
 
 #

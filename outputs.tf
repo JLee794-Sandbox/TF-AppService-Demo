@@ -1,6 +1,6 @@
 output "azurecaf-naming-objects" {
   value = tomap({
-    app     = module.azurecaf-app.*,
+    app = module.azurecaf-app.*,
   })
 }
 

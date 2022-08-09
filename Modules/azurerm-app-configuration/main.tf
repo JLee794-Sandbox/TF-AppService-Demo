@@ -19,11 +19,11 @@ resource "azurerm_app_configuration_feature" "this" {
 
   configuration_store_id = azurerm_app_configuration.this.id
 
-  name                   = each.key
-  description            = lookup(each.value, "description", "")
-  label                  = lookup(each.value, "label", "")
-  enabled                = lookup(each.value, "enabled", false)
-  tags                   = lookup(each.value, "tags", {})
+  name        = each.key
+  description = lookup(each.value, "description", "")
+  label       = lookup(each.value, "label", "")
+  enabled     = lookup(each.value, "enabled", false)
+  tags        = lookup(each.value, "tags", {})
 
   depends_on = [
     azurerm_role_assignment.appconf_dataowner
@@ -45,10 +45,10 @@ resource "azurerm_app_configuration_key" "this" {
   configuration_store_id = azurerm_app_configuration.this.id
   key                    = each.key
 
-  label                  = lookup(each.value, "label", "")
-  value                  = lookup(each.value, "value", "")
-  type                   = lookup(each.value, "type", "kv") # Default to key/value (kv), 'vault' for key ref
-  vault_key_reference    = lookup(each.value, "type", "kv") == "vault" ? lookup(each.value, "vault_key_reference", null) : null # Only used if type is vault
+  label               = lookup(each.value, "label", "")
+  value               = lookup(each.value, "value", "")
+  type                = lookup(each.value, "type", "kv")                                                                     # Default to key/value (kv), 'vault' for key ref
+  vault_key_reference = lookup(each.value, "type", "kv") == "vault" ? lookup(each.value, "vault_key_reference", null) : null # Only used if type is vault
 
   depends_on = [
     azurerm_role_assignment.appconf_dataowner
