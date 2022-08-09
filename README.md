@@ -1,8 +1,8 @@
-# App Service Landing Zone Accelerator - Terraform Implementation Guide
+# App Service Demo
 
 ## Table of Contents
 
-- [App Service Landing Zone Accelerator - Terraform Implementation Guide](#app-service-landing-zone-accelerator---terraform-implementation-guide)
+- [App Service Demo](#app-service-demo)
   - [Table of Contents](#table-of-contents)
   - [Pre-requisites](#pre-requisites)
   - [:rocket: Getting started](#rocket-getting-started)
